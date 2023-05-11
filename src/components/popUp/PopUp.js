@@ -6,7 +6,6 @@ function PopUp(props) {
     const handleTextChangeText = (event) => {
         setText(event.target.value);
     };
-
     const handleTextChangeTitle= (event) => {
         setTitle(event.target.value);
     };

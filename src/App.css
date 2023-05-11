@@ -11,6 +11,12 @@ body{
     font-family: "Poppins", sans-serif;
 }
 /* Add Menu */
+.add_menu{
+    transition: transform 0.1s ease-in;
+}
+.add_menu:hover{
+   transform: scale(1.05);
+}
 .menu{
     position: fixed;
     bottom: 0;
@@ -204,6 +210,7 @@ body{
     display: flex;
     flex-direction: row;
     align-items: center;
+
 }
 .note h4{
     font-weight: 300;
@@ -217,10 +224,19 @@ body{
     margin-right: 20px;
 }
 .row svg{
+    flex-shrink: 0; /* фиксированный размер SVG */
+    width: 12px;
+    height: 12px;
     margin-right: 6px;
 }
-.information{
-    border: none;
+.row{
+    width: 0px;
+    transition: width 0.1s ease-out, opacity 0.1s ease-out;
+    opacity: 0.5;
+}
+.row:hover{
+    width: 100px;
+    opacity: 1;
 }
 /* info-block note*/
 .info-block{
