@@ -1,7 +1,6 @@
 import React from "react";
 
 function PopUpEditInformation(props) {
-    console.log(props.infonote.date)
     return(
         <div className='popUp'>
             <div className='header_popUp'>
@@ -15,7 +14,7 @@ function PopUpEditInformation(props) {
                 <textarea readOnly={true} defaultValue={props.infonote.text} style={{pointerEvents: "none"}} className='text' placeholder='text...'/>
             </div>
             <div className="info-block">
-                <p>{props.infonote.date}</p>
+                <p>Created: {props.infonote.date}</p>
                 <p>by Baturin Dmytro</p>
             </div>
         </div>

@@ -20,7 +20,7 @@ function PopUpEdit(props) {
     };
     function handleSubmit() {
         if(text || title) {
-            props.editNote(props.note.id, title, text)
+            props.editNote(props.note.id, title, text, props.note.date)
             props.hideEditPopUp(false)
         }else if(!text){
             console.log("впиши text")
