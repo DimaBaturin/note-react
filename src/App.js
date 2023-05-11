@@ -5,8 +5,10 @@ import PopUp from "./components/popUp/PopUp";
 import axios from "axios"
 import PopUpEdit from "./components/popUp/PopUpEdit";
 import PopUpInformation from "./components/popUp/PopUpInformation";
+import SkeletonNote from "./components/note/SkeletonNote";
 
 function App() {
+    const [load, setLoad] = useState(true)
     const [error, setError] = useState(false);
     const [editNote, setEditNote] = useState();
     const [alert, setAlert] = useState()
@@ -41,6 +43,7 @@ function App() {
 
     useEffect(() => {
         axios.get('http://localhost:3001/notes').then(res => setnote(res.data))
+            .then(() => setLoad(false))
     }, [delNote, hideEditPopUp])
 
     async function CreateNote(title, text) {
@@ -128,7 +131,7 @@ function App() {
                     <div className="notes_main">
                         <h1>All Notes</h1>
                         <div className='notes'>
-                            {
+                            {load ? [...new Array(6)].map((_, index) => (<SkeletonNote key={index}/>)):
                                 note.filter(value => {
                                     if(value.title && value.title.toLowerCase().includes(noteFilter.toLowerCase())) {
                                         return true;

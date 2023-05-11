@@ -1,15 +1,31 @@
 import React from "react";
 
 function Note(props) {
-    const[hideoption, sethideoption] = React.useState(false)
-    function OnClickMenu(){
-        sethideoption(!hideoption)
+    const[hideoption, setHideOption] = React.useState(false)
+
+    const editorRef = React.useRef(null);
+
+    React.useEffect(() => {
+        function handleClickOutside(event) {
+            if (editorRef.current && !editorRef.current.contains(event.target)) {
+                setHideOption(false);
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [editorRef]);
+
+    function OnClickMenu() {
+        setHideOption(!hideoption);
     }
 
-   return(
+
+    return(
        <>
            <div className='note'>
-               {hideoption && <div className="note_editor">
+               {hideoption && <div ref={editorRef} className="note_editor">
                    <div className='note_editor_elements'>
                        <div onClick={() => props.delete(props.id)} className='row delete'>
                        <svg width="12" height="12" viewBox="0 0 12 12"  fill="none" xmlns="http://www.w3.org/2000/svg">

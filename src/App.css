@@ -72,13 +72,14 @@ body{
 .notes{
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    padding-bottom: 20px;
+    gap: 40px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 .note{
     transition: transform 0.1s ease-in-out;
     position: relative;
     display: inline-block;
-    margin-top: 40px;
     width: 215px;
     height: 285px;
     background: #FFCE76;
